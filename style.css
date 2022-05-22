@@ -39,6 +39,54 @@ body {
     color: black;
 }
 
+.header__search {
+    font-size: 20px;
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 15px;
+    outline: none;
+}
+
+main {
+    margin-top: 100px;
+}
+
 .movies {
-    height: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+    position: relative;
+    width: 240px;
+}
+
+.movie__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie__info-averange {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 25px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid red;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
 }
