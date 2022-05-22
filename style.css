@@ -1,4 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Koulen&family=Lato&family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Koulen&family=Lato&family=Lora&family=Roboto:wght@100;300&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(179, 149, 208);
+}
+
+.header__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    font-family: 'Gilda Display', serif;
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+.movies {
+    height: 1400px;
+}
