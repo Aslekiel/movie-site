@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie syte</title>
+    <title>Movie site</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body> 
@@ -12,7 +12,7 @@
         <header class="header">
             <div class="wrapper">
                 <div class="header__content">
-                    <a href="#" class="header__logo">Movie syte</a>
+                    <a href="#" class="header__logo">Movie site</a>
                     <form>
                         <input type="text" class="header__search" placeholder="Поиск">
                     </form>
@@ -21,11 +21,18 @@
         </header>
         <main class="main">
             <div class="wrapper">
-                <section class="movies">
+                <section class="scrollBar">
+                    <input type="button" class="scrollBar__backBtn" value="Nazad">
+                        <div class="scrollBar__inner">
+                            <div class="scrollBar__content"></div>
+                        </div>
+                    <input type="button" class="scrollBar__forwardBtn" value="Vpered">
                 </section>
+                <h2>TOP-100 movies</h2>
+                <section class="movies"></section>
             </div>
         </main>
-        <footer class="main">
+        <footer class="footer">
 
         </footer>
         </div>
