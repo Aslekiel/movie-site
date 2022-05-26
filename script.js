@@ -30,7 +30,6 @@ function showPremiers (data) {
             <img src="${premier.posterUrlPreview}" alt="${premier.nameRu}">
         `;
         premiersEl.appendChild(premierEl);
-        // console.log(getComputedStyle(premierEl).margin)
     })
 
     //Реализация переключения в слайдБаре
