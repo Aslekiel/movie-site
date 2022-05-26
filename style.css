@@ -200,25 +200,37 @@ main {
     background-color: rgba(0, 0, 0, 0.33);
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1199px) {
     .scrollBar__inner {
         width: 880px;
     }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 980px) {
+    .scrollBar {
+        width: 820px;
+        margin: 0 auto;
+    }
     .scrollBar__inner {
         width: 660px;
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 760px) {
+    .scrollBar {
+        width: 518px;
+        margin: 0 auto;
+    }
     .scrollBar__inner {
         width: 440px;
     }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 520px) {
+    .scrollBar {
+        width: 310px;
+        margin: 0 auto;
+    }
     .scrollBar__inner {
         width: 220px;
     }
