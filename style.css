@@ -12,12 +12,17 @@ body {
     background-color: rgb(69, 69, 69);
 }
 
-.wrapper {
+.container {
     max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    width: inherit;
     text-align: center;
     font-size: 40px;
     color: rgba(255, 255, 255, 0.863);
-    margin: 0 auto;
+    margin: 0 10px;
 }
 
 .header {
@@ -53,7 +58,7 @@ body {
 }
 
 main {
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 .movies {
@@ -140,16 +145,17 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 1200px;
+    width: 100%;
+    height: 310px;
+    background-color: rgba(0, 0, 0, 0.33);
 }
 
 .scrollBar__inner {
     display: flex;
     position: relative;
-    background-color:rgb(107, 208, 211);
-    margin: 0 10px;
-    height: 300px;
-    width: inherit;
+    margin: 0;
+    height: 310px;
+    width: 1100px;
     overflow: hidden;
 }
 
@@ -160,16 +166,60 @@ main {
     position: absolute;
     top: 0;
     left: 0;
+    transition: all ease 0.7s;
 }
 
 .scrollBar__content__movie {
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 210px;
-    height: 280px;
-    margin: 10px;
+    height: 300px;
+    margin: 5px;
 }
 
 .scrollBar__content__movie img{
     width: 100%;
     height: 100%;
+}
+
+.scrollBar__forwardBtn, .scrollBar__backBtn {
+    width: 40px;
+    height: 100%;
+    margin: 0;
+    border: 2px;
+}
+
+.btn__shape__forward {
+    background: url('../movie-site/img/Shape.svg') no-repeat center;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+.btn__shape__back {
+    background: url('../movie-site/img/Shape-back.svg') no-repeat center;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+@media screen and (max-width: 1000px) {
+    .scrollBar__inner {
+        width: 880px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .scrollBar__inner {
+        width: 660px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .scrollBar__inner {
+        width: 440px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .scrollBar__inner {
+        width: 220px;
+    }
 }

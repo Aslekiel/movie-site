@@ -1,6 +1,9 @@
+const date = new Date();
+let months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+
 const apiKey = '40093c2b-21ba-4190-9278-031af018022b';
 const apiUrlPop = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1';
-const apiUrlPremier = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2022&month=JANUARY';
+const apiUrlPremier = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${date.getUTCFullYear()}&month=${months[date.getUTCMonth()]}`;
 const apiUrlSearch = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='
 
 getPremierMovies(apiUrlPremier);
@@ -20,17 +23,6 @@ async function getPremierMovies(url) {
 
 function showPremiers (data) {
     const premiersEl = document.querySelector('.scrollBar__content');
-
-    // for (let i = 0; i < 5; i++) {
-    //     const premierEl = document.createElement('div');
-    //     premierEl.classList.add('scrollBar__content');
-    //     premierEl.innerHTML = `
-    //         <div class="scrollBar__content__movie">
-    //             <img src="${data.items[i].posterUrlPreview}" alt="${data.items[i].nameRu}">
-    //         </div>
-    //     `;
-    //     premiersEl.appendChild(premierEl);
-    // }
     data.items.forEach(premier => {
         const premierEl = document.createElement('div');
         premierEl.classList.add('scrollBar__content__movie');
@@ -38,6 +30,33 @@ function showPremiers (data) {
             <img src="${premier.posterUrlPreview}" alt="${premier.nameRu}">
         `;
         premiersEl.appendChild(premierEl);
+        // console.log(getComputedStyle(premierEl).margin)
+    })
+
+    //Реализация переключения в слайдБаре
+    let count = 0;
+    let imageWidth;
+
+    const images = document.querySelectorAll('.scrollBar__content__movie');
+    const scrollBarInnerWidth = document.querySelector('.scrollBar__inner');
+    images.forEach( image => imageWidth = image.offsetWidth + 10)
+    
+    const scrollBar__forwardBtn = document.querySelector('.scrollBar__forwardBtn');
+    scrollBar__forwardBtn.addEventListener('click', function() {
+        count++;
+        if (count > data.total - (scrollBarInnerWidth.offsetWidth / imageWidth)) {
+            count = data.total - (scrollBarInnerWidth.offsetWidth / imageWidth);
+        }
+        premiersEl.style.transform = 'translate(-' + count * imageWidth + 'px)'
+    });
+
+    const scrollBar__backBtn = document.querySelector('.scrollBar__backBtn');
+    scrollBar__backBtn.addEventListener('click', function() {
+        count--;
+        if (count <= 0) {
+            count = 0;
+        }
+        premiersEl.style.transform = 'translate(-' + count * imageWidth + 'px)'
     })
 };
 // Конец: Получение фильмов-премьер
@@ -74,7 +93,7 @@ function showMovies (data) {
 };
 // Конец: Получение Топ-100 фильмов
 
-// Начало: Заполнение вормы для поиска фильма
+// Начало: Заполнение формы для поиска фильма
 const form = document.querySelector('form');
 const formSearch = document.querySelector('.header__search');
 
@@ -86,7 +105,7 @@ form.addEventListener('submit', (e) => {
         getMovies(apiSearch);
     }
 })
-// Конец: Заполнение вормы для поиска фильма
+// Конец: Заполнение формы для поиска фильма
 
 // Начало: Рейтинг фильма
 function getClassByRate(vote) {
@@ -99,26 +118,3 @@ function getClassByRate(vote) {
     }
 }
 // Конец: Рейтинг фильма
-
-let offset = 0;
-
-const scrollBar__backBtn = document.querySelector('.scrollBar__backBtn');
-const scrollBar__forwardBtn = document.querySelector('.scrollBar__forwardBtn');
-
-const scrollBar = document.querySelector('.scrollBar__content');
-
-scrollBar__backBtn.addEventListener('click', function() {
-    offset -= 220;
-    if (offset < -20000) {
-        offset = 0;
-    }
-    scrollBar.style.left = offset + 'px';
-});
-
-scrollBar__forwardBtn.addEventListener('click', function() {
-    offset += 220;
-    if (offset > 1800) {
-        offset = 0;
-    }
-    scrollBar.style.left = offset + 'px';
-})
