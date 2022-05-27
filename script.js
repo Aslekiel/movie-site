@@ -2,7 +2,7 @@ const date = new Date();
 let months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
 const apiKey = '40093c2b-21ba-4190-9278-031af018022b';
-const apiUrlPop = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1';
+const apiUrlPop = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=';
 const apiUrlPremier = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${date.getUTCFullYear()}&month=${months[date.getUTCMonth()]}`;
 const apiUrlSearch = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='
 
@@ -117,3 +117,31 @@ function getClassByRate(vote) {
     }
 }
 // Конец: Рейтинг фильма
+
+// Начало: Пагинация Топ-100;
+
+const moviesOnPages = 20;
+const list = document.querySelector('.list');
+let items = [];
+// let count = Math.ceil(films.length / moviesOnPages);
+
+for (let i = 1; i <= 5; i++) {
+    let li = document.createElement('li');
+    li.classList.add('item');
+    li.innerHTML = i;
+    list.appendChild(li);
+    items.push(li);
+}
+
+items.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const apiScrollPop = `${apiUrlPop}${item.innerHTML}`;
+        if (apiScrollPop) {
+            document.querySelector('.movies').innerHTML = '';
+            getMovies(apiScrollPop);
+        };
+    })  
+});
+
+// Конец: Пагинация Топ-100; 
